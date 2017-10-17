@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngRoute']);
+var myApp = angular.module('myApp', ['ngRoute', 'ngMaterial', 'ngMessages']);
 
 /// Routes ///
 myApp.config(function($routeProvider, $locationProvider) {
@@ -30,6 +30,10 @@ myApp.config(function($routeProvider, $locationProvider) {
           return UserService.getuser();
         }
       }
+    })
+    .when('/checkIn', {
+      templateUrl: '/views/templates/checkIn.html',
+      controller: 'CheckInController as cc',
     })
     .otherwise({
       redirectTo: 'home'

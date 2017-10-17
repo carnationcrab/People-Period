@@ -3,7 +3,7 @@ An app for people. Period.
 
 ## Checklist
 
-- [ ] Set up log-in and account creation through passport.
+- [x] Set up log-in and account creation through passport.
 
 - [ ] Begin 30 Second check in build
 - [ ] Build 30 second check in quiz with input fields that stores to database and attributes a “week” name to them based on where you are in the cycle.
