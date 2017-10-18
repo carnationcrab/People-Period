@@ -1,46 +1,59 @@
 <div ng-include="'views/partials/nav.html'"></div>
 <div class="container">
-    <p>
-        In CheckIn
-    </p>
-    <!-- <div class="dialog-demo-content" layout="row" layout-wrap="" layout-margin="" layout-align="center">
+  <!-- <div class="dialog-demo-content" layout="row" layout-wrap="" layout-margin="" layout-align="center">
         <md-button class="md-primary md-raised" ng-click="cc.showAdvanced($event)">
             Quiz Dialog
         </md-button> -->
+  <md-card>
+    <md-card-content layout-padding layout-margin layout-fill style="min-height: 224px;">
+      <h2>Period</h2>
 
-        <div layout="column" ng-cloak="" class="md-inline-form inputdemoBasicUsage" ng-app="MyApp">
-              <md-content layout-padding="">
-                <div>
-                  <form name="userForm">
-             <md-switch ng-model="data.hasPeriod" aria-label="Switch 2" ng-true-value="'yup'" ng-false-value="'nope'" class="md-warn md-block">
-                    Currently Have Period: {{ data.hasPeriod }}
-                  </md-switch>
-                    <div layout-gt-xs="row">
-                      <md-input-container class="md-block" flex-gt-xs="">
-                              <p>Flow: <span class="radioValue">{{ data.flow }}</span> </p>
-                              <md-radio-group ng-model="data.flow">
-                                <md-radio-button value="light" class="md-primary">light</md-radio-button>
-                                <md-radio-button value="medium"> medium </md-radio-button>
-                                <md-radio-button value="heavy">heavy</md-radio-button>
-                                <md-radio-button value="spotting">spotting</md-radio-button>
-                              </md-radio-group>
+      <div layout="row" layout-sm="column">
+        <div flex>
+          <md-switch ng-model="cc.data.hasPeriod" ng-click="cc.changeFlow()" aria-label="Switch 2" ng-true-value="'yes'" ng-false-value="'no'" class="md-warn md-block">
+            Currently Have Period: {{ cc.data.hasPeriod }}<p>flow: {{cc.flow}}</p>
+          </md-switch>
+        </div>
 
-                              <p>Mood: <span class="radioValue">{{ data.mood }}</span> </p>
-                              <md-radio-group ng-model="data.mood">
-                                <md-radio-button value="happy" class="md-primary">happy</md-radio-button>
-                                <md-radio-button value="sad"> sad </md-radio-button>
-                                <md-radio-button value="tired">tired</md-radio-button>
-                                <md-radio-button value="angry">angry</md-radio-button>
-                              </md-radio-group>
+        <div flex>
+          <div ng-show="cc.data.hasPeriod==='yes'" ng-hide="cc.data.hasPeriod==='no'">
+            <md-button ng-class="cc.flow ==='heavy' ? 'md-raised md-warn' : 'md-raised'" ng-click="cc.toggleHeavy()" ng-class="heavy">Heavy</md-button>
+            <md-button ng-class="cc.flow ==='medium' ? 'md-raised md-warn' : 'md-raised'" ng-click="cc.toggleMedium()" ng-class="medium">Medium</md-button>
+            <md-button ng-class="cc.flow ==='light' ? 'md-raised md-warn' : 'md-raised'" ng-click="cc.toggleLight()" ng-class="light">light</md-button>
 
-                  </form>
-                  <!-- <div ng-repeat="symptom in cc.symptoms">
-                          <p>{{symptom.name}}</p>
-                               </div> -->
-                </div>
-              </md-content>
             
-            </div>
 
-    </div>
+          </div>
+        </div>
+      </div>
+      <h2>Mood</h2>
+      <p>Mood: {{ cc.mood }}</p>
+        <md-button ng-class="cc.mood ==='very bad' ? 'md-icon-button md-raised md-warn' : 'md-icon-button md-accent'" ng-click="cc.toggleVeryBad()">
+          <md-icon md-svg-icon="vendors/icons/superbad.svg"></md-icon>
+        </md-button>
+        <md-button ng-class="cc.mood ==='bad' ? 'md-icon-button md-raised md-warn' : 'md-icon-button md-accent'" ng-click="cc.toggleBad()">
+          <md-icon md-svg-icon="vendors/icons/somewhatunhappy.svg"></md-icon>
+        </md-button>
+        <md-button ng-class="cc.mood ==='neutral' ? 'md-icon-button md-raised md-warn' : 'md-icon-button md-accent'" ng-click="cc.toggleNeutral()">
+          <md-icon md-svg-icon="vendors/icons/neutral.svg"></md-icon>
+        </md-button>
+        <md-button ng-class="cc.mood ==='good' ? 'md-icon-button md-raised md-warn' : 'md-icon-button md-accent'" ng-click="cc.toggleGood()">
+          <md-icon md-svg-icon="vendors/icons/somewhathappy.svg"></md-icon>
+        </md-button>
+        <md-button ng-click="cc.toggleVeryGood()" ng-class="cc.mood ==='very good' ? 'md-icon-button md-raised md-warn' : 'md-icon-button md-accent'">
+          <md-icon md-svg-icon="vendors/icons/superhappy.svg"></md-icon>
+        </md-button>
+
+      </p>
+      <h2>Symptoms</h2>
+      <md-chips ng-model="cc.symptoms" placeholder="+ a symptom" md-max-chips="5">
+      </md-chips>
+      <!-- <div ng-repeat="symptom in cc.symptoms">
+                                        <p>{{symptom.name}}</p>
+                                             </div> -->
 </div>
+</div>
+
+</div>
+</md-card-content>
+</md-card>

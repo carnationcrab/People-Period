@@ -78,3 +78,17 @@ li a:hover {
   text-decoration: underline;
   color: #eee;
 }
+
+.container {
+  padding-top: 50px;
+  padding-right: 100px;
+  padding-bottom: 100px;
+  padding-left: 80px;
+}
+
+.md-button.md-icon-button:visited {
+  background-color: red }
+
+.md-button.md-raised.md-hue-2:visited {
+  color: red
+}
