@@ -1,6 +1,6 @@
 myApp.controller('CheckInController', function (TrackerService, $mdDialog) {
     console.log('CheckInController created');
-    
+
     var vm = this;
     vm.flow = '';
     vm.mood = '';
@@ -8,14 +8,14 @@ myApp.controller('CheckInController', function (TrackerService, $mdDialog) {
     vm.status = ' ';
     vm.items = [1, 2, 3, 4, 5];
     vm.TrackerService = TrackerService;
-    
+
     vm.data = {
         flow: 'light',
         hasPeriod: 'no',
         date: new Date(),
     };
 
-    
+
 
     if (vm.data.hasPeriod = 'no') {
         vm.flow = 'none';
@@ -91,15 +91,24 @@ myApp.controller('CheckInController', function (TrackerService, $mdDialog) {
     vm.submit = function () {
         console.log('submit clicked');
         var niceDate = new Date().toDateString();
-        var currentCheckIn = {
+        var periodBoolean = '';
+        
+        if (vm.data.hasPeriod==='yes') {
+            periodBoolean= true;
+        }else {
+            periodBoolean= false;
+        }
+
+        vm.currentCheckIn = {
             dateStatus: niceDate,
-            periodStatus: vm.data.hasPeriod,
+            periodStatus: periodBoolean,
             flowStatus: vm.flow,
             moodStatus: vm.mood,
-            symptomStatus: vm.symptoms,
+            symptomStatus: vm.symptoms
 
         }
-        console.log('currentCheckIn', currentCheckIn);
-    };
+        console.log('currentCheckIn', vm.currentCheckIn);
+        TrackerService.sortDates(vm.currentCheckIn);
+    }
 
 });
