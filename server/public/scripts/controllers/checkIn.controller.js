@@ -9,6 +9,7 @@ myApp.controller('CheckInController', function (TrackerService, $mdDialog, $mdSi
     vm.items = [1, 2, 3, 4, 5];
     vm.firstDay = 'no';
     vm.TrackerService = TrackerService;
+    vm.niceDate = new Date().toISOString();
 
     vm.data = {
         flow: 'light',
@@ -91,7 +92,15 @@ myApp.controller('CheckInController', function (TrackerService, $mdDialog, $mdSi
 
     vm.submit = function () {
         console.log('submit clicked');
-        var niceDate = new Date();
+        //var niceDate = new Date();
+
+        console.log('in submit with', 
+        'date', vm.niceDate,
+        'period', vm.data.hasPeriod,
+        'flow', vm.flow,
+        'mood', vm.mood,
+        'symptoms', vm.symptoms,
+        'cycle', vm.firstDay);
 
         var periodBoolean = '';
         var firstDayBoolean = '';
@@ -103,13 +112,13 @@ myApp.controller('CheckInController', function (TrackerService, $mdDialog, $mdSi
         }
 
         if (vm.firstDay==='yes') {
-            firstDayBoolean= 'true';
+            firstDayBoolean= true;
         }else {
-            firstDayBoolean= 'false';
+            firstDayBoolean= false;
         }
 
         vm.currentCheckIn = {
-            dateStatus: niceDate,
+            dateStatus: vm.niceDate,
             periodStatus: periodBoolean,
             flowStatus: vm.flow,
             moodStatus: vm.mood,

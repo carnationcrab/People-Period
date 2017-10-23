@@ -15,6 +15,12 @@ myApp.service('TrackerService', function ($http) {
         days: []
     };
 
+    sv.newCycle = [];
+    sv.cycleCount = '';
+
+    sv.periodDays = [];
+    sv.periodCount = '';
+
     // sv.displayDash = function () {
     //     $http({
     //         method: 'GET',
@@ -66,20 +72,29 @@ myApp.service('TrackerService', function ($http) {
 };
  sv.makeNewCycle = function() {
         console.log('in make new cycle');
-        sv.newCycle = [];
-        console.log('new cycle', sv.newCycle);
-        sv.newCycle.push(sv.allDays.days.shift());
-        console.log('sv.newCycle', sv.newCycle, 'sv.allDays.days', sv.allDays.days);
+        console.log('allDays', sv.allDays.days);
+        sv.allDays.days.shift();
+        console.log('sv.allDays.days', sv.allDays.days);
+        sv.cycleCount = 1;
         
         for (var i = 0; i < sv.allDays.days.length; i++) {
-            if (sv.allDays.days[i].firstDay=== false) {
+            if (sv.allDays.days[i].firstDay === false) {
                 sv.newCycle.push(sv.allDays.days[i]);
+                sv.cycleCount++
             } else {
                 break;
             }
             
         }
         console.log('completed new cycle', sv.newCycle);
+        sv.getPeriodDays();
+        console.log('cycleCount', sv.cycleCount, 'periodCount', sv.periodCount);
+        sv.superCycle = [ {
+            periodStat: sv.periodCount,
+            cycleStat: sv.cycleCount,
+        }];
+
+        sv.addCycle(sv.superCycle);
         
     }
 
@@ -89,5 +104,35 @@ myApp.service('TrackerService', function ($http) {
         
 
     }
+
+    sv.getPeriodDays = function() {
+        console.log(sv.periodDays);
+        sv.periodCount = '';
+
+        for (var i = 0; i < sv.newCycle.length; i++) {
+            if (sv.newCycle[i].period=== true) {
+                sv.periodDays.push(sv.newCycle[i]);
+                sv.periodCount++
+
+            };
+            console.log('periodDays', sv.periodDays);
+
+
+    };
+};
+
+sv.addCycle = function (cycleToAdd) {
+    console.log('in addCycle', cycleToAdd)
+    $http({
+        method: 'POST',
+        url: '/cycles',
+        data: cycleToAdd,
+    }).then(function(response){
+        console.log('checkIn posted', response);
+        //sv.displayDash();
+    });
+};
+
+
 });
    

@@ -11,17 +11,19 @@
     <md-button ng-click="openLeftMenu()">
         <md-icon md-svg-icon="vendors/icons/forward.svg"></md-icon></md-button>
   </md-nav-bar>
-      <md-sidenav md-component-id="left" class="locked-sidebar" md-is-locked-open="true" md-whiteframe="4" >
-          <md-toolbar>
-            <md-button ng-click="closeLeftMenu()">
-              <md-icon md-svg-icon="vendors/icons/backward.svg"></md-icon>
-            </md-button>
-            </md-toolbar>
-          <md-list-item href="#/user">Dashboard</md-list-item><br>
-          <md-list-item href="#/checkIn">CheckIn</md-list-item><br>
-          <md-list-item href="#/info">Info</md-list-item><br>
+  <div layout="row" ng-controller="MyController">
+      <md-sidenav md-component-id="left" class="md-sidenav-left">
+        Left Nav!
+        <md-button ng-click="closeLeftMenu()">
+          Open Left Menu
+        </md-button>
+        <md-list-item href="#/user">Dashboard</md-list-item>
+        
+                      <md-list-item href="#/checkIn" ng-class="{ 'side-button-active': isSelected(2) && isOpen }">
+                        <i ng-class="{ 'side-icon-active': isSelected(2) && isOpen,'side-icon-inactive': !isSelected(2), 'material-icons': true}">person</i>
+                      </md-list-item>
       </md-sidenav>
-      <md-content>
+        
       </md-content>
   </section>
 
