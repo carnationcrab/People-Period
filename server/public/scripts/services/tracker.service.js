@@ -71,22 +71,11 @@ myApp.service('TrackerService', function ($http) {
     });
 };
  sv.makeNewCycle = function() {
-        console.log('in make new cycle');
-        console.log('allDays', sv.allDays.days);
+     //removing first day of new cycle
         sv.allDays.days.shift();
-        console.log('sv.allDays.days', sv.allDays.days);
-        sv.cycleCount = 1;
+
+        sv.cycleCount = sv.allDays.days.length;
         
-        for (var i = 0; i < sv.allDays.days.length; i++) {
-            if (sv.allDays.days[i].firstDay === false) {
-                sv.newCycle.push(sv.allDays.days[i]);
-                sv.cycleCount++
-            } else {
-                break;
-            }
-            
-        }
-        console.log('completed new cycle', sv.newCycle);
         sv.getPeriodDays();
         console.log('cycleCount', sv.cycleCount, 'periodCount', sv.periodCount);
         sv.superCycle = [ {
@@ -109,9 +98,9 @@ myApp.service('TrackerService', function ($http) {
         console.log(sv.periodDays);
         sv.periodCount = '';
 
-        for (var i = 0; i < sv.newCycle.length; i++) {
-            if (sv.newCycle[i].period=== true) {
-                sv.periodDays.push(sv.newCycle[i]);
+        for (var i = 0; i < sv.allDays.days.length; i++) {
+            if (sv.allDays.days[i].period=== true) {
+                sv.periodDays.push(sv.allDays.days[i]);
                 sv.periodCount++
 
             };
