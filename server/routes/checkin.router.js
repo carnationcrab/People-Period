@@ -8,6 +8,13 @@ var bodyParser = require('body-parser');
 
 router.use(bodyParser.json());
 
+router.get('/', function (req, res) {
+    console.log('In get route');
+    CheckIn.find({username: "sam"}).sort({date: -1}).then(function (data) {
+        res.send(data);
+    });
+});
+
 router.post('/', function (req, res) {
     
     var checkInToAdd = new CheckIn({
@@ -15,7 +22,9 @@ router.post('/', function (req, res) {
         period : req.body.periodStatus,
         flow : req.body.flowStatus,
         mood : req.body.moodStatus,
-        symptoms : req.body.symptomStatus
+        firstDay : req.body.cycleStatus,
+        symptoms : req.body.symptomStatus,
+        username : req.user.username,
     })
     console.log('In checkIn Post with', checkInToAdd)
 

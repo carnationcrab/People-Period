@@ -1,4 +1,4 @@
-myApp.controller('CheckInController', function (TrackerService, $mdDialog) {
+myApp.controller('CheckInController', function (TrackerService, $mdDialog, $mdSidenav) {
     console.log('CheckInController created');
 
     var vm = this;
@@ -7,6 +7,7 @@ myApp.controller('CheckInController', function (TrackerService, $mdDialog) {
     vm.symptoms = [];
     vm.status = ' ';
     vm.items = [1, 2, 3, 4, 5];
+    vm.firstDay = 'no';
     vm.TrackerService = TrackerService;
 
     vm.data = {
@@ -90,8 +91,10 @@ myApp.controller('CheckInController', function (TrackerService, $mdDialog) {
 
     vm.submit = function () {
         console.log('submit clicked');
-        var niceDate = new Date().toDateString();
+        var niceDate = new Date();
+
         var periodBoolean = '';
+        var firstDayBoolean = '';
         
         if (vm.data.hasPeriod==='yes') {
             periodBoolean= true;
@@ -99,16 +102,31 @@ myApp.controller('CheckInController', function (TrackerService, $mdDialog) {
             periodBoolean= false;
         }
 
+        if (vm.firstDay==='yes') {
+            firstDayBoolean= 'true';
+        }else {
+            firstDayBoolean= 'false';
+        }
+
         vm.currentCheckIn = {
             dateStatus: niceDate,
             periodStatus: periodBoolean,
             flowStatus: vm.flow,
             moodStatus: vm.mood,
-            symptomStatus: vm.symptoms
+            symptomStatus: vm.symptoms,
+            cycleStatus: firstDayBoolean,
 
         }
         console.log('currentCheckIn', vm.currentCheckIn);
         TrackerService.sortDates(vm.currentCheckIn);
+        
+        if (vm.currentCheckIn.cycleStatus) {
+            console.log('restarting the cycle!');
+            TrackerService.calculateCycle();
+    }
     }
 
-});
+    
+
+
+    });

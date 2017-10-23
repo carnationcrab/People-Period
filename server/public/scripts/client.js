@@ -3,7 +3,7 @@ var myApp = angular.module('myApp', ['ngRoute', 'ngMaterial', 'ngMessages']);
 /// Routes ///
 myApp.config(function($routeProvider, $locationProvider, $mdThemingProvider) {
   $locationProvider.hashPrefix('');
-  $mdThemingProvider.theme('default').primaryPalette('red').accentPalette('orange').dark();
+  $mdThemingProvider.theme('default').primaryPalette('red').accentPalette('orange');
   console.log('myApp -- config')
   $routeProvider
     .when('/home', {

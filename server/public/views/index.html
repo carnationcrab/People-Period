@@ -11,6 +11,7 @@
         <script type="text/javascript" src="scripts/controllers/login.controller.js"></script>
         <script type="text/javascript" src="scripts/controllers/user.controller.js"></script>
         <script type="text/javascript" src="scripts/controllers/checkIn.controller.js"></script>
+        <script type="text/javascript" src="scripts/controllers/nav.controller.js"></script>
         <script type="text/javascript" src="scripts/services/user.service.js"></script>
         <script type="text/javascript" src="scripts/services/tracker.service.js"></script>
         
@@ -30,8 +31,10 @@
 
     <body ng-app="myApp">
       <header ng-include="'/views/partials/header.html'"></header>
+      <div layout="column" ng-include="'views/partials/nav.html'"></div>
+      
 
-      <main ng-view></main>
+      <main layout="column" ng-view></main>
 
     </body>
 </html>

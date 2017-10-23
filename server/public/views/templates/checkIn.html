@@ -1,4 +1,3 @@
-<div ng-include="'views/partials/nav.html'"></div>
 <div class="container">
   <!-- <div class="dialog-demo-content" layout="row" layout-wrap="" layout-margin="" layout-align="center">
         <md-button class="md-primary md-raised" ng-click="cc.showAdvanced($event)">
@@ -7,12 +6,19 @@
   <md-card>
     <md-card-content layout-padding layout-margin layout-fill style="min-height: 224px;">
       <h2>Period</h2>
+      
+      <div flex>
+            <h3>First Day Of Cycle?</h3><md-switch ng-model="cc.firstDay" ng-true-value="'yes'" ng-false-value="'no'" class="md-primary md-block">
+            </md-switch>
+          </div>
 
       <div layout="row" layout-sm="column">
         <div flex>
           <md-switch ng-model="cc.data.hasPeriod" ng-click="cc.changeFlow()" aria-label="Switch 2" ng-true-value="'yes'" ng-false-value="'no'" class="md-primary md-block">
           </md-switch>
         </div>
+
+        
 
         <div flex>
           <div ng-show="cc.data.hasPeriod==='yes'" ng-hide="cc.data.hasPeriod==='no'">
