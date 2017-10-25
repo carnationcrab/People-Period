@@ -85,3 +85,9 @@ li a:hover {
 .md-button.md-raised.md-hue-2:visited {
   color: red
 }
+
+.takeQuiz {
+  background: url(../vendors/icons/checkmark.svg) no-repeat;
+  background-size: 76%;
+  background-position: center; 
+}

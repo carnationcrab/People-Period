@@ -27,9 +27,9 @@
             </md-grid-tile-footer>
           </md-grid-tile>
       
-          <md-grid-tile class="green">
+          <md-grid-tile class="takeQuiz">
             <md-grid-tile-footer>
-              <md-button>add a period</md-button>
+              <md-button>check in</md-button>
             </md-grid-tile-footer>
           </md-grid-tile>
       
@@ -43,9 +43,11 @@
       
           <md-grid-tile class="blue"
               md-rowspan="1">
+              <h1>period: {{dc.avgPeriod.count}}</h1>
+              <h1>cycle: {{dc.avgCycle.count}}</h1>
               
             <md-grid-tile-footer>
-              <md-button>add symptoms</md-button>
+              <md-button>avg lengths</md-button>
             </md-grid-tile-footer>
           </md-grid-tile>
       

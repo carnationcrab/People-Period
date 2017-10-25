@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var checkInSchema = new Schema({
     username: String,
-    date: String,
+    date: Date,
     period: Boolean,
     flow: String,
     mood: String,

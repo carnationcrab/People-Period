@@ -9,7 +9,7 @@ myApp.controller('CheckInController', function (TrackerService, $mdDialog, $mdSi
     vm.items = [1, 2, 3, 4, 5];
     vm.firstDay = 'no';
     vm.TrackerService = TrackerService;
-    vm.niceDate = new Date().toISOString();
+    vm.niceDate = new Date();
 
     vm.data = {
         flow: 'light',
@@ -93,6 +93,7 @@ myApp.controller('CheckInController', function (TrackerService, $mdDialog, $mdSi
     vm.submit = function () {
         console.log('submit clicked');
         //var niceDate = new Date();
+        vm.niceDate = new Date(vm.niceDate);
 
         console.log('in submit with', 
         'date', vm.niceDate,
@@ -134,7 +135,6 @@ myApp.controller('CheckInController', function (TrackerService, $mdDialog, $mdSi
             TrackerService.calculateCycle();
     }
     }
-
     
 
 

@@ -8,6 +8,14 @@ var bodyParser = require('body-parser');
 
 router.use(bodyParser.json());
 
+router.get('/', function (req, res) {
+        console.log('In get route');
+        Cycles.find({username: req.user.username}).then(function (data) {
+            res.send(data);
+        });
+    });
+
+
 router.post('/', function (req, res) {
     console.log('req.body', req.body);
     
@@ -27,7 +35,6 @@ router.post('/', function (req, res) {
             res.sendStatus(200);
         }
     });
-
 
 });
 
