@@ -1,0 +1,135 @@
+
+        <md-grid-list
+              md-cols-xs="1" md-cols-sm=2 md-cols-md=4 md-cols-gt-md=6
+              md-row-height-gt-md="1:1" md-row-height="2:2"
+              md-gutter="12px" md-gutter-gt-sm="8px" >
+      
+          <md-grid-tile class="gray"
+              md-rowspan="3" md-colspan=2 md-colspan-sm="1" md-colspan-xs="1">
+              <md-list>
+                    <md-list-item=>
+                      <div class="md-list-item">Add A Period
+                      </div>
+                    </md-list-item>
+                    <md-list-item>
+                            <div class="md-list-item">
+                              <h3>Add A Mood</h3>
+                            </div>
+                          </md-list-item>
+                          <md-list-item>
+                                <div class="md-list-item">
+                                  <h3>Add Symptoms</h3>
+                                </div>
+                              </md-list-item>
+                  </md-list>
+            <md-grid-tile-footer>
+              <h3>#1: (3r x 2c)</h3>
+            </md-grid-tile-footer>
+          </md-grid-tile>
+      
+          <md-grid-tile class="green">
+            <md-grid-tile-footer>
+              <md-button>add a period</md-button>
+            </md-grid-tile-footer>
+          </md-grid-tile>
+      
+          <md-grid-tile class="yellow">
+              Most Frequent Mood
+                <percent-circle percent=50></percent-circle>
+            <md-grid-tile-footer>
+              <md-button>add a mood</md-button>
+            </md-grid-tile-footer>
+          </md-grid-tile>
+      
+          <md-grid-tile class="blue"
+              md-rowspan="1">
+              
+            <md-grid-tile-footer>
+              <md-button>add symptoms</md-button>
+            </md-grid-tile-footer>
+          </md-grid-tile>
+      
+          <!-- <md-grid-tile class="red"
+              md-rowspan="1" md-colspan="1" md-colspan-sm="1" md-colspan-xs="1">
+            <md-grid-tile-footer>
+              <h3>#5: (1r x 1c)</h3>
+            </md-grid-tile-footer>
+          </md-grid-tile> -->
+      
+          <!-- <md-grid-tile class="green"
+              md-rowspan="2" >
+            <md-grid-tile-footer>
+              <h3>#6: (2r x 1c)</h3>
+            </md-grid-tile-footer>
+          </md-grid-tile> -->
+
+          <md-grid-tile class="green"
+          md-rowspan="2" md-colspan="3" md-colspan-xs="1">
+          Most Frequent Symptoms:
+          <percent-circle percent=25></percent-circle>
+          <percent-circle percent=6></percent-circle>
+          <percent-circle percent=10></percent-circle>
+        <md-grid-tile-footer>
+          <h3>#7: (2r x 3c)</h3>
+        </md-grid-tile-footer>
+      </md-grid-tile>
+      
+        </md-grid-list>
+      </div>
+      
+<!-- <md-card> -->
+
+        <!-- <md-toolbar class="md-accent">
+                <div class='md-toolbar-tools' layout='row'>
+                    <md-button>
+                        <md-tooltip>Previous month</md-tooltip>
+                        Prev
+                    </md-button>
+                    <div flex></div>
+                    <h2><span>Month</span></h2>
+                    <div flex></div>
+                    <md-button>
+                        <md-tooltip>Next month</md-tooltip>
+                        Next
+                    </md-button>
+                </div>
+            </md-toolbar> -->
+
+            <!-- 
+            var html = '<table class="calendar-table">';
+            html += '<tr><th colspan="7">';
+            html +=  monthName + "&nbsp;" + this.year;
+            html += '</th></tr>';
+            html += '<tr class="calendar-header">';
+            for (var i = 0; i <= 6; i++ ){
+              html += '<td class="calendar-header-day">';
+              html += cal_days_labels[i];
+              html += '</td>';
+            }
+            html += '</tr><tr>'; -->
+    
+    <!-- <md-toolbar>
+        <md-button>{{dc.monthName}} {{dc.year}}</md-button>
+    </md-toolbar>
+    <md-toolbar class="md-toolbar-tools">
+            <md-list-item ng-repeat="day in dc.calDays">{{day}}</md-list-item>
+        </md-toolbar>
+        <md-grid-list md-cols="7" md-row-height="fit" style="height: 400px;" ...> -->
+
+        <!-- for (var i = 0; i < 9; j++) {
+            // this loop is for weekdays (cells)
+            for (var j = 0; j <= 6; j++) { 
+              html += '<td class="calendar-day">';
+              if (day <= monthLength && (i > 0 || j >= startingDay)) {
+                html += day;
+                day++;
+              }
+              html += '</td>';
+            }
+                     -->
+    
+    <!-- <md-grid-tile ng-repeat="number in dc.listOfDays">{{number}}</md-grid-tile>
+
+</md-grid-list>
+</md-card> -->
+

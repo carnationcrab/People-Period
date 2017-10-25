@@ -10,7 +10,7 @@ router.use(bodyParser.json());
 
 router.get('/', function (req, res) {
     console.log('In get route');
-    CheckIn.find({username: "sam"}).sort({date: -1}).then(function (data) {
+    CheckIn.find({username: req.body.username}).sort({date: -1}).then(function (data) {
         res.send(data);
     });
 });

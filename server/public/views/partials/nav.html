@@ -7,7 +7,23 @@
 </div> -->
 
 <section ng-controller="MyController">
-<md-nav-bar md-selected-nav-item="currentNavItem" aria-label="nav">
+    <md-fab-toolbar md-direction="right">
+        <md-fab-trigger>
+          <md-button class="md-fab md-primary" aria-label="Open"><md-icon md-svg-icon="vendors/icons/forward.svg"></md-icon></md-button>
+        </md-fab-trigger>
+      
+        <md-toolbar>
+            
+         <md-fab-actions class="md-toolbar-tools">
+           <md-icon md-svg-icon="vendors/icons/backward.svg"></md-icon>
+            <md-button href="#/user">User</md-button>
+            <md-button href="#/checkIn">Check-In</md-button>
+            <md-button href="#/dash">Dashboard</md-button>
+            <md-button href="#/info">Info Page</md-button>
+         </md-fab-actions>
+        </md-toolbar>
+      </md-fab-toolbar>
+<!-- <md-nav-bar md-selected-nav-item="currentNavItem" aria-label="nav">
     <md-button ng-click="openLeftMenu()">
         <md-icon md-svg-icon="vendors/icons/forward.svg"></md-icon></md-button>
   </md-nav-bar>
@@ -25,7 +41,7 @@
       </md-sidenav>
         
       </md-content>
-  </section>
+  </section> -->
 
   <!-- <div ng-controller="MyController" layout="column" class="section" ng-cloak>
       

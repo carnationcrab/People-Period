@@ -1,40 +1,20 @@
-<div class="container">
-  <!-- <div class="dialog-demo-content" layout="row" layout-wrap="" layout-margin="" layout-align="center">
-        <md-button class="md-primary md-raised" ng-click="cc.showAdvanced($event)">
-            Quiz Dialog
-        </md-button> -->
-  <md-card>
-    <md-card-content layout-padding layout-margin layout-fill style="min-height: 224px;">
-      <md-datepicker ng-model="cc.niceDate"></md-datepicker>
-      <h2>Period</h2>
-      
-      <div flex>
-            <h3>First Day Of Cycle?</h3><md-switch ng-model="cc.firstDay" ng-true-value="'yes'" ng-false-value="'no'" class="md-primary md-block">
-            </md-switch>
-          </div>
-
-      <div layout="row" layout-sm="column">
-        <div flex>
-          <md-switch ng-model="cc.data.hasPeriod" ng-click="cc.changeFlow()" aria-label="Switch 2" ng-true-value="'yes'" ng-false-value="'no'" class="md-primary md-block">
-          </md-switch>
-        </div>
-
-        
-
-        <div flex>
-          <div ng-show="cc.data.hasPeriod==='yes'" ng-hide="cc.data.hasPeriod==='no'">
-            <md-button ng-class="cc.flow ==='heavy' ? 'md-raised md-primary' : 'md-raised'" ng-click="cc.toggleHeavy()" ng-class="heavy">Heavy</md-button>
-            <md-button ng-class="cc.flow ==='medium' ? 'md-raised md-primary' : 'md-raised'" ng-click="cc.toggleMedium()" ng-class="medium">Medium</md-button>
-            <md-button ng-class="cc.flow ==='light' ? 'md-raised md-primary' : 'md-raised'" ng-click="cc.toggleLight()" ng-class="light">light</md-button>
-
-            
-
-          </div>
-        </div>
-      </div>
-      
-      <h2>Mood</h2>
-        <md-button ng-class="cc.mood ==='very bad' ? 'md-icon-button md-raised md-accent' : 'md-icon-button md-accent'" ng-click="cc.toggleVeryBad()">
+<div layout="row">
+    <div flex="33">
+        <md-switch ng-model="cc.data.hasPeriod" ng-click="cc.changeFlow()" aria-label="Switch 2" ng-true-value="'yes'" ng-false-value="'no'" class="md-primary md-block">Period
+          </md-switch> 
+    </div>
+    <div flex="33"ng-show="cc.data.hasPeriod==='yes'" ng-hide="cc.data.hasPeriod==='no'"><md-switch ng-model="cc.firstDay" ng-true-value="'yes'" ng-false-value="'no'" class="md-primary md-block">New Cycle? 
+      </md-switch>
+    </div>
+    <div flex="33" ng-show="cc.data.hasPeriod==='yes'" ng-hide="cc.data.hasPeriod==='no'">
+        <md-button ng-class="cc.flow ==='heavy' ? 'md-raised md-primary' : 'md-raised'" ng-click="cc.toggleHeavy()" ng-class="heavy">Heavy</md-button>
+        <md-button ng-class="cc.flow ==='medium' ? 'md-raised md-primary' : 'md-raised'" ng-click="cc.toggleMedium()" ng-class="medium">Medium</md-button>
+        <md-button ng-class="cc.flow ==='light' ? 'md-raised md-primary' : 'md-raised'" ng-click="cc.toggleLight()" ng-class="light">light</md-button>
+    </div>
+  </div>
+  <div layout="row">
+    <div flex="100">Mood:
+      <md-button ng-class="cc.mood ==='very bad' ? 'md-icon-button md-raised md-accent' : 'md-icon-button md-accent'" ng-click="cc.toggleVeryBad()">
           <md-icon md-svg-icon="vendors/icons/superbad.svg"></md-icon>
         </md-button>
         <md-button ng-class="cc.mood ==='bad' ? 'md-icon-button md-raised md-accent' : 'md-icon-button md-accent'" ng-click="cc.toggleBad()">
@@ -49,26 +29,28 @@
         <md-button ng-click="cc.toggleVeryGood()" ng-class="cc.mood ==='very good' ? 'md-icon-button md-raised md-accent' : 'md-icon-button md-accent'">
           <md-icon md-svg-icon="vendors/icons/superhappy.svg"></md-icon>
         </md-button>
-     
-      <div layout="row" layout-sm="column">
-      <h2>Symptoms</h2>
-      <md-chips ng-model="cc.symptoms" placeholder="+ a symptom" md-max-chips="5">
+    </div>
+    </div>
+    <div layout="row">
+    <div flex="100">symptoms:
+    <md-chips ng-model="cc.symptoms" placeholder="+ a symptom" md-max-chips="5">
       </md-chips>
-      </div>
-      <div layout="row" layout-sm="column">
-      <md-card-actions>
+    </div>
     <md-button ng-click="cc.submit()">submit
-    </md-button>
-  </md-card-actions>
+  </md-button>
 </div>
 
-      <!-- <div ng-repeat="symptom in cc.symptoms">
-                                        <p>{{symptom.name}}</p>
-                                             </div> -->
-</div>
-</div>
+<div class="container">
+    <md-grid-list md-cols="3" md-gutter="1em" md-row-height="1:1">
+        <md-grid-tile>
+          </md-grid-tile>
+          <md-grid-tile </md-grid-tile>
+          <md-grid-tile </md-grid-tile>
+      </md-grid-list>
 
+      <md-grid-list md-cols="1" md-gutter="1em" md-row-height="1:1">
+      <md-grid-tile></md-grid-tile>
+        <md-grid-tile></md-grid-tile>
+          <md-grid-tile><md-button ng-click="cc.submit()">submit
+            </md-button></md-grid-tile>
 </div>
-
-</md-card-content>
-</md-card>

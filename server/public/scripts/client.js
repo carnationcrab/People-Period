@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngRoute', 'ngMaterial', 'ngMessages']);
+var myApp = angular.module('myApp', ['ngRoute', 'ngMaterial', 'ngMessages', 'percentCircle-directive']);
 
 /// Routes ///
 myApp.config(function($routeProvider, $locationProvider, $mdThemingProvider) {
@@ -35,6 +35,10 @@ myApp.config(function($routeProvider, $locationProvider, $mdThemingProvider) {
     .when('/checkIn', {
       templateUrl: '/views/templates/checkIn.html',
       controller: 'CheckInController as cc',
+    })
+    .when('/dash', {
+      templateUrl: '/views/templates/dashboard.html',
+      controller: 'DashboardController as dc'
     })
     .otherwise({
       redirectTo: 'home'
