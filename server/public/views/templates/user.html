@@ -1,5 +1,100 @@
 <div class="container">
+    <md-button class="md-fab md-primary" ng-click="uc.userService.logout()">
+        <md-icon md-svg-icon="vendors/icons/logout.svg"></md-icon>
+    </md-button>
 
     <h1 id="welcome" class="lead">Welcome, {{uc.userObject.userName}}!</h1>
-    <button class="btn btn-default" ng-click="uc.userService.logout()">Log Out</button>
 </div>
+
+<section layout="row">
+    <div flex="5"></div>
+
+    <div flex="column">
+
+        <div layout="row" layout-margin>
+            <md-card flex="60" layout="row" layout-margin>
+                <div flex="50">
+                    <h1 class="headline">Next Period</h1>
+                </div>
+                <div flex="50">
+                    <h1>{{uc.newCycleStart.start | date: 'shortDate' }}</h1>
+                </div>
+            </md-card>
+            <md-card flex="20" layout="row" layout-margin>
+                <div flex="50">
+                    <h1>Period</h1>
+                    <h1>Length</h1>
+                </div>
+                <div flex="50">
+                    <h1>{{uc.avgPeriod.count}}</h1>
+                </div>
+            </md-card>
+            <md-card flex="20" layout="row" layout-margin>
+                <div flex="50">
+                    <h1>Cycle</h1>
+                    <h1>Length</h1>
+                </div>
+                <div flex="50">
+                    <h1>{{uc.avgCycle.count}}</h1>
+                </div>
+            </md-card>
+        </div>
+        <div layout="row" layout-margin>
+            <div flex="100" layout="column" layout-margin>
+
+                <div layout="row" layout-margin>
+                    <div flex="25">
+                        <h1>{{uc.numberOneSymptom}}</h1>
+                        <percent-circle percent=uc.oneSymptomPercent colors="{highlight: 'red', remaining: '#fac8bf', center: '#323331'}"></percent-circle>
+                    </div>
+                    <div flex="25">
+                        <h1>{{uc.numberTwoSymptom}}</h1>
+                        <percent-circle percent=uc.twoSymptomPercent colors="{highlight: 'red', remaining: '#fac8bf', center: '#323331'}"></percent-circle>
+                    </div>
+                    <div flex="25">
+                        <h1>{{uc.numberThreeSymptom}}</h1>
+                        <percent-circle percent=uc.threeSymptomPercent colors="{highlight: 'red', remaining: '#fac8bf', center: '#323331'}"></percent-circle>
+                    </div>
+                    <div flex="25">
+                        <h1>mood: {{uc.mainMood}}</h1> 
+                        <percent-circle percent=uc.avgMood colors="{highlight: 'red', remaining: '#fac8bf', center: '#484947'}"></percent-circle>
+                    </div>
+                    
+                </div>
+                <div layout="row">
+                    <div>
+                        <h1>Most Common Symptoms</h1>
+                    </div>
+                </div>
+            </div>
+            <!-- <md-card flex="33" layout="column">
+                    <md-button href="/#/checkin">Check In</md-button>
+        </md-card> -->
+            
+            <br>
+        </div>
+
+            
+<!-- 
+                <div flex="50">
+                    <h1>Cycle</h1>
+                    <h1>Length</h1>
+                </div>
+                <div flex="50">
+                    <h1>{{uc.avgCycle.count}}</h1>
+                </div>
+            </md-card>
+
+            <md-card flex="50" layout="row">
+                <div flex="50">
+                    <h1>Period</h1>
+                    <h1>Length</h1>
+                </div>
+                <div flex="50">
+                    <h1>{{uc.avgPeriod.count}}</h1>
+                </div>
+            </md-card>
+        </div> -->
+
+    <div flex="10"></div>
+</section>

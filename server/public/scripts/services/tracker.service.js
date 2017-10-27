@@ -154,7 +154,8 @@ sv.addCycle = function (cycleToAdd) {
 };
 
 sv.getAllLengths = function() {
-    $http({
+    console.log('in get all lengths')
+    return $http({
         method: 'GET',
         url: '/cycles'
     }).then(function (response) {
@@ -223,6 +224,12 @@ sv.calculateLength = function(period, cycle) {
 
     
 };
+
+sv.getCycles = function() {
+    return $http({
+        method: 'GET',
+        url: '/checkIn'
+    }).then(function(response){ sv.allDays.days = response.data;})}
 
 });
    
