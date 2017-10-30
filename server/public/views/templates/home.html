@@ -1,18 +1,33 @@
 <div class="container">
-  <h1 class="lead">Login</h1>
-    <h1 class="lead alert alert-danger" role="alert" ng-if="lc.message != ''">{{lc.message}}</h2>
-    <form ng-submit="lc.login()">
-      <div>
-          <label for="username">Username:</label>
-          <input type="text" ng-model="lc.user.username" />
-      </div>
-      <div>
-          <label for="password">Password:</label>
-          <input type="password" ng-model="lc.user.password" />
-      </div>
-      <div>
-          <input class="btn btn-default" type="submit" name="submit" value="Log In" />
-          <a href="#register">Register</a>
-      </div>
-    </form>
+    <img class="logo" src="../../vendors/peoplePeriod.png">
+    <div layout="row">
+        <div flex="35"></div> 
+        <h1 class="lead alert alert-danger" role="alert" ng-if="lc.message != ''">{{lc.message}}</h2>
+        <md-content flex>
+                <form name="loginForm" ng-submit="lc.login()">
+                  <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" layout="column" layout-padding>
+                    <md-card-title>
+                      <md-card-title-text>
+                        <span class="md-headline">Login</span>
+                      </md-card-title-text>
+                    </md-card-title>
+                    <md-input-container class="md-block" flex-gt-sm="">
+                      <label>Username</label>
+                      <input required="" ng-model="lc.user.username">
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-sm="">
+                      <label>Password</label>
+                      <input required="" type="password" name="password" ng-model="lc.user.password">
+                    </md-input-container>
+                    <div layout="row">
+                      <md-button class="md-raised md-primary" flex="50" type="submit" name="submit">Sign In</md-button>
+                      <md-button class="md-raised md-primary" flex="50" href="/register">Register</md-button>
+                    </div>
+                    <h4 ng-if="lc.message != ''">{{lc.message}}</h4>
+                  </md-card>
+                </form>
+              </md-content>
+        <div flex="35"></div> 
+    </div>
+    
 </div>

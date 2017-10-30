@@ -1,9 +1,11 @@
-var myApp = angular.module('myApp', ['ngRoute', 'ngMaterial', 'ngMessages', 'percentCircle-directive']);
+var myApp = angular.module('myApp', ['ngRoute', 'ngMaterial', 'ngMessages', 'percentCircle-directive', 'chart.js']);
 
 /// Routes ///
-myApp.config(function($routeProvider, $locationProvider, $mdThemingProvider) {
+myApp.config(function($routeProvider, $locationProvider, $mdThemingProvider, ChartJsProvider) {
   $locationProvider.hashPrefix('');
   $mdThemingProvider.theme('default').primaryPalette('red').accentPalette('orange').dark();
+    // Configure all charts 
+   
   console.log('myApp -- config')
   $routeProvider
     .when('/home', {

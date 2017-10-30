@@ -23,6 +23,7 @@ myApp.service('TrackerService', function ($http) {
     sv.allLengths = [];
 
     sv.newCycle = {start: ''};
+    sv.aCycle = [];
 
     // sv.displayDash = function () {
     //     $http({
@@ -75,14 +76,24 @@ myApp.service('TrackerService', function ($http) {
             sv.makeNewCycle();
     });
 };
- sv.makeNewCycle = function() {
 
+ sv.makeNewCycle = function() {
         //removing first day of new cycle
         sv.allDays.days.shift();
 
+        //make new cycle
+        for (var i = 0; i < sv.allDays.days.length; i++) {
+            if (sv.allDays.days[i].firstDay=== false) {
+                sv.aCycle.push(sv.allDays.days[i]);
+            } else {
+                break;
+            };
+        };
+            
+
         //set start and end
-        var cycleStart = sv.allDays.days[sv.allDays.days.length-1].date;
-        var cycleEnd = sv.allDays.days[0].date;
+        var cycleStart = sv.aCycle[sv.aCycle.length-1].date;
+        var cycleEnd = sv.aCycle[0].date;
 
         console.log('cycleStart', cycleStart, 'cycleEnd', cycleEnd);
 
@@ -189,8 +200,8 @@ sv.averageLengths = function() {
         cycleSum = cycleSum + allCycles[f];  
     }
 
-    var avgPeriod = periodSum / (allPeriods.length);
-    var avgCycle = cycleSum / (allCycles.length);
+    var avgPeriod = Math.ceil(periodSum / (allPeriods.length));
+    var avgCycle = Math.ceil(cycleSum / (allCycles.length));
 
     sv.averagePeriod.count = avgPeriod;
     sv.averageCycle.count = avgCycle;

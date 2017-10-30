@@ -91,6 +91,7 @@ myApp.controller('CheckInController', function (TrackerService, $mdDialog, $mdSi
     };
 
     vm.submit = function () {
+        swal("Yay!", "Check in completed for the day!", "success");
         console.log('submit clicked');
         //var niceDate = new Date();
         vm.niceDate = new Date(vm.niceDate);

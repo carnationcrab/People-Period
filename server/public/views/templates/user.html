@@ -9,9 +9,9 @@
 <section layout="row">
     <div flex="5"></div>
 
-    <div flex="column">
+    <div flex="column" flex="90">
 
-        <div layout="row" layout-margin>
+        <div layout="row"  layout-margin>
             <md-card flex="60" layout="row" layout-margin>
                 <div flex="50">
                     <h1 class="headline">Next Period</h1>
@@ -43,21 +43,21 @@
             <div flex="100" layout="column" layout-margin>
 
                 <div layout="row" layout-margin>
-                    <div flex="25">
+                    <div flex="15">
                         <h1>{{uc.numberOneSymptom}}</h1>
                         <percent-circle percent=uc.oneSymptomPercent colors="{highlight: 'red', remaining: '#fac8bf', center: '#323331'}"></percent-circle>
                     </div>
-                    <div flex="25">
+                    <div flex="15">
                         <h1>{{uc.numberTwoSymptom}}</h1>
                         <percent-circle percent=uc.twoSymptomPercent colors="{highlight: 'red', remaining: '#fac8bf', center: '#323331'}"></percent-circle>
                     </div>
-                    <div flex="25">
+                    <div flex="15">
                         <h1>{{uc.numberThreeSymptom}}</h1>
                         <percent-circle percent=uc.threeSymptomPercent colors="{highlight: 'red', remaining: '#fac8bf', center: '#323331'}"></percent-circle>
                     </div>
-                    <div flex="25">
-                        <h1>mood: {{uc.mainMood}}</h1> 
-                        <percent-circle percent=uc.avgMood colors="{highlight: 'red', remaining: '#fac8bf', center: '#484947'}"></percent-circle>
+                    <div flex="55">
+                        <h1>mood</h1>
+                            <canvas class="chart chart-line" chart-data="uc.data" chart-labels="uc.labels" chart-click="uc.onClick"></canvas> 
                     </div>
                     
                 </div>
@@ -96,5 +96,5 @@
             </md-card>
         </div> -->
 
-    <div flex="10"></div>
+    <div flex="5"></div>
 </section>

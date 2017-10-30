@@ -21,6 +21,9 @@ myApp.controller('UserController', function(UserService, TrackerService) {
   var allMoods = [];
   var moodCounts = [];
   var mainMood = '';
+  var moodNumbers = []
+  vm.data = '';
+  vm.labels = [];
 
   vm.moodPic = '';
 
@@ -54,12 +57,12 @@ vm.sortedSymptoms.sort(function(a, b) {
 console.log('sorted symptoms', vm.sortedSymptoms)
 
 vm.numberOneSymptom = vm.sortedSymptoms[vm.sortedSymptoms.length-1][0];
-vm.oneSymptomPercent = vm.sortedSymptoms[vm.sortedSymptoms.length-1][1] / vm.allSymptomCount * 100;
+vm.oneSymptomPercent = vm.sortedSymptoms[vm.sortedSymptoms.length-1][1] / TrackerService.allDays.days.length * 100;
 console.log('one', vm.numberOneSymptom, vm.oneSymptomPercent);
 vm.numberTwoSymptom = vm.sortedSymptoms[vm.sortedSymptoms.length-2][0];
-vm.twoSymptomPercent = vm.sortedSymptoms[vm.sortedSymptoms.length-2][1] / vm.allSymptomCount  * 100;
+vm.twoSymptomPercent = vm.sortedSymptoms[vm.sortedSymptoms.length-2][1] / TrackerService.allDays.days.length  * 100;
 vm.numberThreeSymptom = vm.sortedSymptoms[vm.sortedSymptoms.length-3][0];
-vm.threeSymptomPercent = vm.sortedSymptoms[vm.sortedSymptoms.length-3][1] / vm.allSymptomCount * 100;
+vm.threeSymptomPercent = vm.sortedSymptoms[vm.sortedSymptoms.length-3][1] / TrackerService.allDays.days.length * 100;
 
   //also average moods
   var moodCount = 0
@@ -72,41 +75,41 @@ vm.threeSymptomPercent = vm.sortedSymptoms[vm.sortedSymptoms.length-3][1] / vm.a
  }
  console.log(moodCounts);
 
- vm.sortedMoods = [];
- vm.sortedMoods = Object.keys(moodCounts).map(function(key) {
-  return [String(key), moodCounts[key]];
-});
+ moodNumbers = [];
 
-console.log(vm.sortedMoods, moodCount);
-
-vm.sortedMoods.sort(function(a, b) {
-return a[1] - b[1];
-});
-
-vm.mainMood = vm.sortedMoods[vm.sortedMoods.length-1][0];
-vm.avgMood = vm.sortedMoods[vm.sortedMoods.length-1][1] / moodCount * 100;
-
-console.log('main mood', vm.mainMood, 'avg', vm.avgMood);
-
-//pick moodpic
-
-if (vm.mainMood==="very bad") {
-  vm.moodPic="../../../vendors/icons/superbad.svg";
+ for (var a = 0; a < allMoods.length; a++) {
+   if (allMoods[a]==="very bad") {
+  moodNumbers.push(1);
 }
-if (vm.mainMood==="bad") {
-  vm.moodPic="../../../vendors/icons/somewhatunhappy.svg";
+if (allMoods[a]==="bad") {
+  moodNumbers.push(2);
 }
-if (vm.mainMood==="neutral") {
-  vm.moodPic="../../../vendors/icons/neutral.svg";
+if (allMoods[a]==="neutral") {
+  moodNumbers.push(3);
 }
-if (vm.mainMood==="good") {
-  vm.moodPic="../../../vendors/icons/somewhathappy.svg";
+if (allMoods[a]==="good") {
+  moodNumbers.push(4);
 }
-if (vm.mainMood==="very good") {
-  vm.moodPic="../../../vendors/icons/superhappy.svg";
+if (allMoods[a]==="very good") {
+  moodNumbers.push(5);
+}
+ }
+
+ for (var a = 0; a < TrackerService.allDays.days.length; a++) {
+  vm.labels.push(new Date(TrackerService.allDays.days[a].date).toLocaleDateString());
 }
 
-console.log(vm.moodPic)
+
+ console.log('moodnumbers', moodNumbers, vm.labels)
+
+ moodNumbers = moodNumbers.slice(0,7);
+ vm.labels= vm.labels.slice(0,7);
+ vm.labels.reverse();
+ moodNumbers.reverse();
+ vm.data = moodNumbers;
+ vm.onClick = function (points, evt) {
+console.log(points, evt); };
+
   };
   
 
@@ -124,4 +127,6 @@ vm.getAllLengths = function() {
      }; 
 
 vm.getAllLengths();
+
+
 });
