@@ -1,39 +1,128 @@
-<div class="container">
-    <md-button class="md-fab md-primary" ng-click="uc.userService.logout()">
-        <md-icon md-svg-icon="vendors/icons/logout.svg"></md-icon>
-    </md-button>
-
-    <h1 id="welcome" class="lead">Welcome, {{uc.userObject.userName}}!</h1>
-</div>
 
 <section layout="row">
     <div flex="5"></div>
+              <div flex="" class="gridListdemoDynamicTiles" ng-app="MyApp">
+                    <md-grid-list md-cols-sm="8" md-cols-md="8" md-cols-gt-md="8" md-row-height-gt-md="1:1" md-row-height="4:3" md-gutter="8px" md-gutter-gt-sm="4px">
+                     
+                      <md-grid-tile md-colspan="2" md-colspan-md="4" md-rowspan-md="2" md-colspan-sm="4" md-rowspan-sm="2">
+                            <div class="gray" md-whiteframe="3" flex="100" layout="row" layout-margin>
+                                    <div class="charty" flex="50">
+                                        <br>
+                                        <br>
+                                            <img src="../../vendors/icons/empty_drop.svg"><br> Average Period Days
+                                    </div>
+                                    <md-divider></md-divider>
+                                    <div flex="50">
+                                        <h1 class="stat">{{uc.avgPeriod.count}}</h1>
+                                    </div>
+                                </div>
+                           
+                          </md-grid-tile>
+                          <md-grid-tile md-colspan="2" md-colspan-md="4" md-rowspan-md="2" md-colspan-sm="4" md-rowspan-sm="2">
+                                <div class="gray" md-whiteframe="3" flex="100" layout="row" layout-margin>
+                                        <div class="charty" flex="50">
+                                            <br>
+                                            <br>
+                                            <img src="../../vendors/icons/cycle.svg"> <br>Average Cycle Days
+                                        </div>
+                                        <md-divider></md-divider>
+                                        <div flex="50">
+                                            <h1 class="stat">{{uc.avgCycle.count}}</h1>
+                                        </div>
+                                    </div>
+                               
+                              </md-grid-tile>
+    <md-grid-tile md-colspan="4" md-colspan-md="8" md-rowspan-md="2" md-colspan-sm="8" md-rowspan-sm="2">
+                            <div class="darkRed" md-whiteframe="3" flex="100" layout="row" layout-margin>
+                                    <div flex="50">
+                                        <br>
+                                        <br>
+                                            <img src="../../vendors/icons/time.svg"> <br>Next Period
+                                    </div>
+                                    <md-divider></md-divider>
+                                    <div flex="50">
+                                        <h1 class="stat">{{uc.newCycleStart.start | date: 'shortDate' }}</h1>
+                                    </div>
+                                </div>
+                    
+                      </md-grid-tile>
 
+                      <md-grid-tile md-rowspan="2" md-colspan="4" md-colspan-md="8" md-colspan-sm="8" md-rowspan-md="5" md-rowspan-sm="5">
+                            <div id="charty" layout="column" layout-margin>
+                                    Symptoms
+                                    <md-divider></md-divider>
+                                                    <div layout="row" layout-margin>
+                                                        <div flex="33">
+                                                            <h1>{{uc.numberOneSymptom}}</h1>
+                                                            <percent-circle percent=uc.oneSymptomPercent colors="{highlight: 'red', remaining: '#652625', center: '#323331'}"></percent-circle>
+                                                        </div>
+                                                        <div flex="33">
+                                                            <h1>{{uc.numberTwoSymptom}}</h1>
+                                                            <percent-circle percent=uc.twoSymptomPercent colors="{highlight: 'red', remaining: '#652625', center: '#323331'}"></percent-circle>
+                                                        </div>
+                                                        <div flex="33">
+                                                            <h1>{{uc.numberThreeSymptom}}</h1>
+                                                            <percent-circle percent=uc.threeSymptomPercent colors="{highlight: 'red', remaining: '#652625', center: '#323331'}"></percent-circle>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                    </div>
+                      </md-grid-tile>
+
+                      <md-grid-tile md-rowspan="2" md-colspan="4" md-colspan-md="8" md-colspan-sm="8" md-rowspan-md="6" md-rowspan-sm="6">
+                            <div flex="100" layout="column" layout-margin>
+            
+                                            Mood
+                                            <md-divider></md-divider>
+                                 
+                                     <div flex="50">
+                                         <canvas id="line" class="chart chart-line" chart-data="data"
+                                        chart-labels="labels" chart-series="series" chart-options="options"
+                                        chart-click="onClick">
+                                </canvas>
+                                date
+                                         </div>
+                            </div>
+                      </md-grid-tile>
+                      <md-grid-tile md-rowspan="2" md-colspan="8" md-colspan-md="8" md-colspan-sm="8" md-rowspan-md="2" md-rowspan-sm="2">
+                            <img id="navlogo" class="center" src="../../vendors/peoplePeriod.png">
+                      </md-grid-tile>
+                      
+                    </md-grid-list>
+                  </div>
+                  <div flex="5"></div>
+</section>
+
+<!-- <section layout="row">
+    <div flex="5"></div>
+    
     <div flex="column" flex="90">
 
         <div layout="row"  layout-margin>
-            <md-card flex="60" layout="row" layout-margin>
+            <md-button class="md-raised md-primary" href="#/checkIn">check in!</md-button>
+            <md-card flex="60" layout="column" layout-margin>
                 <div flex="50">
+                    <md-toolbar>
                     <h1 class="headline">Next Period</h1>
-                </div>
+                </md-toolbar></div>
                 <div flex="50">
                     <h1>{{uc.newCycleStart.start | date: 'shortDate' }}</h1>
                 </div>
             </md-card>
-            <md-card flex="20" layout="row" layout-margin>
+            <md-card flex="20" layout="column" layout-margin>
                 <div flex="50">
-                    <h1>Period</h1>
-                    <h1>Length</h1>
-                </div>
+                    <md-toolbar>
+                    <h1>Period Length</h1>
+                </md-toolbar></div>
                 <div flex="50">
                     <h1>{{uc.avgPeriod.count}}</h1>
                 </div>
             </md-card>
-            <md-card flex="20" layout="row" layout-margin>
+            <md-card flex="20" layout="column" layout-margin>
                 <div flex="50">
-                    <h1>Cycle</h1>
-                    <h1>Length</h1>
-                </div>
+                    <md-toolbar>
+                    <h1>Cycle Length</h1>
+                </md-toolbar></div>
                 <div flex="50">
                     <h1>{{uc.avgCycle.count}}</h1>
                 </div>
@@ -43,58 +132,48 @@
             <div flex="100" layout="column" layout-margin>
 
                 <div layout="row" layout-margin>
-                    <div flex="15">
+                    <div flex="20">
                         <h1>{{uc.numberOneSymptom}}</h1>
                         <percent-circle percent=uc.oneSymptomPercent colors="{highlight: 'red', remaining: '#fac8bf', center: '#323331'}"></percent-circle>
                     </div>
-                    <div flex="15">
+                    <div flex="20">
                         <h1>{{uc.numberTwoSymptom}}</h1>
                         <percent-circle percent=uc.twoSymptomPercent colors="{highlight: 'red', remaining: '#fac8bf', center: '#323331'}"></percent-circle>
                     </div>
-                    <div flex="15">
+                    <div flex="20">
                         <h1>{{uc.numberThreeSymptom}}</h1>
                         <percent-circle percent=uc.threeSymptomPercent colors="{highlight: 'red', remaining: '#fac8bf', center: '#323331'}"></percent-circle>
                     </div>
-                    <div flex="55">
+                    <div flex="40" layout="column">
                         <h1>mood</h1>
-                            <canvas class="chart chart-line" chart-data="uc.data" chart-labels="uc.labels" chart-click="uc.onClick"></canvas> 
+                         <canvas id="line" class="chart chart-line" chart-data="data"
+                            chart-labels="labels" chart-series="series" chart-options="options"
+                            chart-click="onClick">
+                    </canvas>
+                    date
                     </div>
                     
                 </div>
-                <div layout="row">
-                    <div>
-                        <h1>Most Common Symptoms</h1>
-                    </div>
-                </div>
-            </div>
+               
+            </div> -->
             <!-- <md-card flex="33" layout="column">
                     <md-button href="/#/checkin">Check In</md-button>
         </md-card> -->
             
-            <br>
-        </div>
+        <!-- </div>
 
-            
-<!-- 
-                <div flex="50">
-                    <h1>Cycle</h1>
-                    <h1>Length</h1>
-                </div>
-                <div flex="50">
-                    <h1>{{uc.avgCycle.count}}</h1>
-                </div>
-            </md-card>
-
-            <md-card flex="50" layout="row">
-                <div flex="50">
-                    <h1>Period</h1>
-                    <h1>Length</h1>
-                </div>
-                <div flex="50">
-                    <h1>{{uc.avgPeriod.count}}</h1>
-                </div>
-            </md-card>
-        </div> -->
-
+    </div>
     <div flex="5"></div>
 </section>
+
+<div layout="row">
+    <div flex="5"></div>
+        <md-card flex="90">
+            <md-toolbar>
+                a thing
+            </md-toolbar>
+            more things
+        </md-card>
+        <div flex="5"></div>
+    </div>
+     -->

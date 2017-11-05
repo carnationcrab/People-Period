@@ -1,11 +1,37 @@
-<div class="navbar">
-    <ul>
-      <li><a href="#/user">Dashboard</a></li>
-      <li><a href="#/checkIn">Check-In</a></li>
-      <li><a href="#/info">Info Page</a></li>
-    </ul>
-</div>
+<md-content class="md-padding">
 
+    <md-nav-bar
+      md-no-ink-bar="disableInkBar"
+      md-selected-nav-item="currentNavItem"
+      nav-bar-aria-label="navigation links">
+      <div flex="5"></div>
+      <h1 ng-controller="UserController as uc" id="welcome" class="lead">Welcome, {{uc.userObject.userName}}!</h1>
+      <md-nav-item md-nav-href="#/user" name="page1">
+        <md-icon md-svg-icon="vendors/icons/dashboard.svg"></md-icon>
+      </md-nav-item>
+      <md-nav-item md-nav-href="#/checkIn" name="page2">
+        <md-icon md-svg-icon="vendors/icons/check.svg"></md-icon>
+      </md-nav-item>
+      <md-nav-item md-nav-href="#/info" name="page3">
+          <md-icon md-svg-icon="vendors/icons/info.svg"></md-icon>
+      </md-nav-item>
+      <md-nav-item md-nav-href="goto('page3')" name="page3">
+          <md-icon md-svg-icon="vendors/icons/help.svg"></md-icon>
+      </md-nav-item>
+      <p class="right" ng-controller="UserController as uc" ng-click="uc.userService.logout()" name="logout">logout
+          <md-icon md-svg-icon="vendors/icons/logout.svg"></md-icon>
+      </p>
+      <!-- these require actual routing with ui-router or ng-route, so they
+      won't work in the demo
+      <md-nav-item md-nav-href="#page4" name="page5">Page Four</md-nav-item>
+      <md-nav-item md-nav-sref="app.page5" name="page4">Page Five</md-nav-item>
+      You can also add options for the <code>ui-sref-opts</code> attribute.
+      <md-nav-item md-nav-sref="page6" sref-opts="{reload:true, notify:true}">
+        Page Six
+      </md-nav-item>
+      -->
+    </md-nav-bar>
+  </md-content>
 <!-- <section ng-controller="MyController">
     <md-fab-toolbar md-direction="right">
         <md-fab-trigger>

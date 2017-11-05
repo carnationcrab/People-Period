@@ -1,5 +1,5 @@
 <section layout="row">
-  <div flex="33"></div>
+  <div flex="5"></div>
   <div flex="column" layout-align="center center">
     <md-card layout-margin>
         <div layout="row" layout-margin>
@@ -11,12 +11,17 @@
               </md-switch>
             </div>
             <div flex="33" ng-show="cc.data.hasPeriod==='yes'" ng-hide="cc.data.hasPeriod==='no'">
-                <md-button ng-class="cc.flow ==='heavy' ? 'md-raised md-primary' : 'md-raised'" ng-click="cc.toggleHeavy()" ng-class="heavy">Heavy</md-button>
-                <md-button ng-class="cc.flow ==='medium' ? 'md-raised md-primary' : 'md-raised'" ng-click="cc.toggleMedium()" ng-class="medium">Medium</md-button>
-                <md-button ng-class="cc.flow ==='light' ? 'md-raised md-primary' : 'md-raised'" ng-click="cc.toggleLight()" ng-class="light">light</md-button>
+                <md-button ng-class="cc.flow ==='heavy' ? 'md-icon-button md-raised md-primary' : 'md-icon-button md-accent'" ng-click="cc.toggleHeavy()" ng-class="heavy">
+                  <md-icon md-svg-icon="vendors/icons/empty_drop.svg"></md-icon></md-button>
+                <md-button ng-class="cc.flow ==='medium' ? 'md-icon-button md-raised md-primary' : 'md-icon-button md-accent'" ng-click="cc.toggleMedium()" ng-class="medium">
+                    <md-icon md-svg-icon="vendors/icons/halfdrop.svg"></md-icon>
+                </md-button>
+                <md-button ng-class="cc.flow ==='light' ? 'md-icon-button md-raised md-primary' : 'md-icon-button md-accent'" ng-click="cc.toggleLight()" ng-class="light">
+                    <md-icon md-svg-icon="vendors/icons/fulldrop.svg"></md-icon>
+                </md-button>
             </div>
           </div>
-          <div layout-align="center center" class="white" layout="row">
+          <div layout-align="center center" layout="row">
             Mood:
               <md-button ng-class="cc.mood ==='very bad' ? 'md-icon-button md-raised md-accent' : 'md-icon-button md-accent'" ng-click="cc.toggleVeryBad()">
                   <md-icon md-svg-icon="vendors/icons/superbad.svg"></md-icon>
@@ -47,7 +52,7 @@
     </md-card>
 
   </div>
-  <div flex="33"></div>
+  <div flex="5"></div>
 </section>
 
 

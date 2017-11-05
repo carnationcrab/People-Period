@@ -110,3 +110,53 @@ h1 {
   text-align: center;
   color: black;
 }
+
+#navlogo {
+  width: 20%;
+}
+
+.left {
+  position: absolute;
+  left: 80px;
+}
+
+ .right {
+  position: absolute;
+  right: 20px;
+} 
+
+.center {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+
+.box {
+  background-color: lightblue;
+}
+
+#charty {
+  height: 100%;
+  width: 100%;
+}
+
+#bigIcon {
+  height: 500%
+}
+
+.stat {
+  font-size: 40px;
+  vertical-align: middle
+}
+
+.md-grid-tile {
+  vertical-align: middle;
+}
+
+.gray {
+  background-color: 	#404040
+}
+
+.darkRed {
+  background-color: #652625;
+}

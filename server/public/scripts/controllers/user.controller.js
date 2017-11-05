@@ -1,4 +1,4 @@
-myApp.controller('UserController', function(UserService, TrackerService) {
+myApp.controller('UserController', function(UserService, TrackerService, $scope) {
   console.log('UserController created');
   var vm = this;
   vm.userService = UserService;
@@ -109,6 +109,22 @@ if (allMoods[a]==="very good") {
  vm.data = moodNumbers;
  vm.onClick = function (points, evt) {
 console.log(points, evt); };
+$scope.onClick= vm.onClick;
+$scope.data= [vm.data];
+$scope.labels= vm.labels;
+$scope.series = ['Mood Level'];
+$scope.options = {
+  scales: {
+    yAxes: [
+      {
+        id: 'y-axis-1',
+        type: 'linear',
+        display: true,
+        position: 'left'
+      }
+    ]
+  }
+};
 
   };
   
